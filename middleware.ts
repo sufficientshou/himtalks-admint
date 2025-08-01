@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
   if (isProtectedPath) {
     try {
       // Check authentication status
-      const response = await fetch("https://api.teknohive.me/api/protected", {
+      const response = await fetch("https://api.himtalks.my.id/api/protected", {
         headers: {
           cookie: request.headers.get("cookie") || "",
         },

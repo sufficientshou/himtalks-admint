@@ -40,7 +40,7 @@ export default function SettingsPage() {
   const fetchBlacklistedWords = async () => {
     try {
       setLoadingWords(true)
-      const response = await fetch("https://api.teknohive.me/api/admin/blacklist", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/blacklist", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -69,7 +69,7 @@ export default function SettingsPage() {
   // Then update the fetchSongfessDays function
   const fetchSongfessDays = async () => {
     try {
-      const response = await fetch("https://api.teknohive.me/api/admin/configs", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/configs", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -120,7 +120,7 @@ export default function SettingsPage() {
 
     try {
       setAddingWord(true)
-      const response = await fetch("https://api.teknohive.me/api/admin/blacklist", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/blacklist", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -155,7 +155,7 @@ export default function SettingsPage() {
   const handleRemoveBlacklistWord = async (word: string) => {
     try {
       setRemovingWord(word)
-      const response = await fetch("https://api.teknohive.me/api/admin/blacklist/remove", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/blacklist/remove", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -201,7 +201,7 @@ export default function SettingsPage() {
 
     try {
       setUpdatingSongfessDays(true)
-      const response = await fetch("https://api.teknohive.me/api/admin/configSongfessDays", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/configSongfessDays", {
         method: "POST",
         credentials: "include",
         headers: {

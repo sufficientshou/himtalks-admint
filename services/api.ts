@@ -1,4 +1,4 @@
-const API_BASE = "https://api.teknohive.me"
+const API_BASE = "https://api.himtalks.my.id"
 
 export async function deleteMessage(id: string) {
   try {

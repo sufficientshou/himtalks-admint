@@ -16,7 +16,7 @@ export default function SongfessPage() {
   const { isAuthenticated, refreshAuthStatus } = useAuth()
 
   // Initialize WebSocket connection
-  const { lastMessage } = useWebSocket("wss://api.teknohive.me/songfess")
+  const { lastMessage } = useWebSocket("wss://api.himtalks.my.id/songfess")
 
   // Fetch initial songfess entries
   const loadSongfess = async () => {

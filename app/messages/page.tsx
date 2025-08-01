@@ -16,7 +16,7 @@ export default function MessagesPage() {
   const { isAuthenticated, refreshAuthStatus } = useAuth()
 
   // Initialize WebSocket connection
-  const { lastMessage } = useWebSocket("wss://api.teknohive.me/messages")
+  const { lastMessage } = useWebSocket("wss://api.himtalks.my.id/messages")
 
   // Fetch initial messages
   const loadMessages = async () => {
