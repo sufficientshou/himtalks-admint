@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ArrowLeft, Music, Trash2 } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
 import { useToast } from "@/hooks/use-toast"
@@ -155,6 +156,45 @@ export default function SongfessDetailsPage() {
               <p title={formatExactDate(songfess.created_at)}>{formatSafeDate(songfess.created_at)}</p>
             </div>
           </div>
+          
+          {/* Song Timing Information Table */}
+          {(songfess.start_time !== undefined || songfess.end_time !== undefined) && (
+            <div className="mb-6">
+              <div className="text-sm mb-2 font-medium">Song Timing:</div>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Property</TableHead>
+                    <TableHead>Value</TableHead>
+                    <TableHead>Formatted Time</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {songfess.start_time !== undefined && (
+                    <TableRow>
+                      <TableCell className="font-medium">Start Time</TableCell>
+                      <TableCell>{songfess.start_time}s</TableCell>
+                      <TableCell>{Math.floor(songfess.start_time / 60)}:{(songfess.start_time % 60).toString().padStart(2, '0')}</TableCell>
+                    </TableRow>
+                  )}
+                  {songfess.end_time !== undefined && (
+                    <TableRow>
+                      <TableCell className="font-medium">End Time</TableCell>
+                      <TableCell>{songfess.end_time}s</TableCell>
+                      <TableCell>{Math.floor(songfess.end_time / 60)}:{(songfess.end_time % 60).toString().padStart(2, '0')}</TableCell>
+                    </TableRow>
+                  )}
+                  {songfess.start_time !== undefined && songfess.end_time !== undefined && (
+                    <TableRow className="bg-muted/30">
+                      <TableCell className="font-medium">Duration</TableCell>
+                      <TableCell>{songfess.end_time - songfess.start_time}s</TableCell>
+                      <TableCell>{Math.floor((songfess.end_time - songfess.start_time) / 60)}:{((songfess.end_time - songfess.start_time) % 60).toString().padStart(2, '0')}</TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+          )}
           
           {/* Spotify Embed */}
           {songfess.song_id && (

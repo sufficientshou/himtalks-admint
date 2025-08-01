@@ -97,9 +97,16 @@ export default function SongfessList({ songfess, onDelete }: SongfessListProps) 
               
               <div className="mt-4 space-y-2">
                 <p className="text-sm line-clamp-2">{item.content}</p>
-                <p className="text-xs text-muted-foreground">
-                  From: {item.sender_name || "Anonymous"} • To: {item.recipient_name || "Unknown"}
-                </p>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <span>From: {item.sender_name || "Anonymous"} • To: {item.recipient_name || "Unknown"}</span>
+                  {(item.start_time !== undefined || item.end_time !== undefined) && (
+                    <span className="inline-flex items-center px-2 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">
+                      🕒 Timed: {item.start_time !== undefined ? `${Math.floor(item.start_time / 60)}:${(item.start_time % 60).toString().padStart(2, '0')}` : '--'}
+                      {item.start_time !== undefined && item.end_time !== undefined ? ' - ' : ''}
+                      {item.end_time !== undefined ? `${Math.floor(item.end_time / 60)}:${(item.end_time % 60).toString().padStart(2, '0')}` : ''}
+                    </span>
+                  )}
+                </div>
               </div>
             </CardContent>
             
