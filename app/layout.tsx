@@ -9,8 +9,8 @@ import { SidebarTrigger } from "@/components/ui/sidebar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "HIMTALKS - Himpunan Mahasiswa Teknik Informatika",
-  description: "A platform for messages and song confessions for UNSIKA students",
+  title: "HIMTALKS Admin - Himpunan Mahasiswa Teknik Informatika",
+  description: "Admin platform for messages and song confessions for UNSIKA students",
 }
 
 export default function RootLayout({
