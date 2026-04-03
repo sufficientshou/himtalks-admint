@@ -21,7 +21,7 @@ export function useAuth() {
   const checkAuthStatus = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch('http://localhost:8080/api/protected', {
+      const response = await fetch('https://api.himtalks.my.id/api/protected', {
         credentials: 'include'
       })
 
@@ -49,12 +49,12 @@ export function useAuth() {
 
   const login = () => {
     // Redirect to the backend Google login URL
-    window.location.href = "http://localhost:8080/auth/google/login"
+    window.location.href = "https://api.himtalks.my.id/auth/google/login"
   }
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:8080/auth/logout', {
+      await fetch('https://api.himtalks.my.id/auth/logout', {
         method: 'POST',
         credentials: 'include'
       })

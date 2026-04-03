@@ -40,7 +40,7 @@ export default function SettingsPage() {
   const fetchBlacklistedWords = async () => {
     try {
       setLoadingWords(true)
-      const response = await fetch("http://localhost:8080/api/admin/blacklist", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/blacklist", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -69,7 +69,7 @@ export default function SettingsPage() {
   // Then update the fetchSongfessDays function
   const fetchSongfessDays = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/admin/configs", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/configs", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -120,7 +120,7 @@ export default function SettingsPage() {
 
     try {
       setAddingWord(true)
-      const response = await fetch("http://localhost:8080/api/admin/blacklist", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/blacklist", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -155,7 +155,7 @@ export default function SettingsPage() {
   const handleRemoveBlacklistWord = async (word: string) => {
     try {
       setRemovingWord(word)
-      const response = await fetch("http://localhost:8080/api/admin/blacklist/remove", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/blacklist/remove", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -201,7 +201,7 @@ export default function SettingsPage() {
 
     try {
       setUpdatingSongfessDays(true)
-      const response = await fetch("http://localhost:8080/api/admin/configSongfessDays", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/configSongfessDays", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -235,7 +235,7 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="container py-4 md:py-6">
+      <div className="container mx-auto p-4 md:p-6 lg:p-8">
         <Card>
           <CardHeader>
             <Skeleton className="h-8 w-48 mb-2" />
@@ -253,7 +253,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="container py-4 md:py-6">
+    <div className="container mx-auto p-4 md:p-6 lg:p-8">
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="text-xl md:text-2xl flex items-center gap-2">

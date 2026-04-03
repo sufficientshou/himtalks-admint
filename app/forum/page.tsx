@@ -354,7 +354,7 @@ export default function ForumPage() {
   }
 
   return (
-    <div className="container py-6 max-w-4xl mx-auto">
+    <div className="container mx-auto p-4 md:p-6 lg:p-8 max-w-4xl">
       <Tabs defaultValue="manage" className="space-y-6">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="manage">Manage Forums</TabsTrigger>

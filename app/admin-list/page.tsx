@@ -27,7 +27,7 @@ export default function AdminListPage() {
   const fetchAdmins = async () => {
     try {
       setLoading(true)
-      const response = await fetch("http://localhost:8080/api/admin/list", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/list", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -74,7 +74,7 @@ export default function AdminListPage() {
 
     try {
       setAddingAdmin(true)
-      const response = await fetch("http://localhost:8080/api/admin/addAdmin", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/addAdmin", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -109,7 +109,7 @@ export default function AdminListPage() {
   const handleRemoveAdmin = async (adminEmail: string) => {
     try {
       setRemovingAdmin(adminEmail)
-      const response = await fetch("http://localhost:8080/api/admin/removeAdmin", {
+      const response = await fetch("https://api.himtalks.my.id/api/admin/removeAdmin", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -142,7 +142,7 @@ export default function AdminListPage() {
   }
 
   return (
-    <div className="container py-4 md:py-6">
+    <div className="container mx-auto p-4 md:p-6 lg:p-8">
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="text-xl md:text-2xl flex items-center gap-2">

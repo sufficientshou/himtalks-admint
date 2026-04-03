@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8080";
+const API_BASE = "https://api.himtalks.my.id";
 
 export async function fetchAdminList() {
   try {
@@ -177,23 +177,13 @@ export async function createForum(formData: FormData) {
 
 export async function fetchForums() {
   try {
-    // Try the admin endpoint first, fallback to public endpoint
-    let response = await fetch(`${API_BASE}/api/admin/forums`, {
+    // Backend only exposes GET /forums for fetching the forum list
+    const response = await fetch(`${API_BASE}/forums`, {
       credentials: "include",
       headers: {
         "Accept": "application/json"
       }
     });
-
-    if (!response.ok) {
-      // Fallback to public forums endpoint
-      response = await fetch(`${API_BASE}/forums`, {
-        credentials: "include",
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-    }
 
     if (!response.ok) {
       throw new Error("Failed to fetch forums");

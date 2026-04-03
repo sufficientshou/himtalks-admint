@@ -16,7 +16,7 @@ export default function MessagesPage() {
   const { isAuthenticated, refreshAuthStatus } = useAuth()
 
   // Initialize WebSocket connection
-  const { lastMessage } = useWebSocket("ws://localhost:8080/messages")
+  const { lastMessage } = useWebSocket("wss://api.himtalks.my.id/messages")
 
   // Fetch initial messages
   const loadMessages = async () => {
@@ -84,7 +84,7 @@ export default function MessagesPage() {
   }
 
   return (
-    <div className="container py-6">
+    <div className="container mx-auto p-4 md:p-6 lg:p-8">
       <Card>
         <CardHeader>
           <CardTitle>Messages</CardTitle>

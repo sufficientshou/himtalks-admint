@@ -16,7 +16,7 @@ export default function SongfessPage() {
   const { isAuthenticated, refreshAuthStatus } = useAuth()
 
   // Initialize WebSocket connection
-  const { lastMessage } = useWebSocket("ws://localhost:8080/songfess")
+  const { lastMessage } = useWebSocket("wss://api.himtalks.my.id/songfess")
 
   // Fetch initial songfess entries
   const loadSongfess = async () => {
@@ -84,7 +84,7 @@ export default function SongfessPage() {
   }
 
   return (
-    <div className="container py-6">
+    <div className="container mx-auto p-4 md:p-6 lg:p-8">
       <Card>
         <CardHeader>
           <CardTitle>Songfess</CardTitle>
