@@ -16,7 +16,7 @@ export default function MessagesPage() {
   const { isAuthenticated, refreshAuthStatus } = useAuth()
 
   // Initialize WebSocket connection
-  const { lastMessage } = useWebSocket("wss://api.himtalks.my.id/messages")
+  const { lastMessage } = useWebSocket("ws://localhost:8080/messages")
 
   // Fetch initial messages
   const loadMessages = async () => {

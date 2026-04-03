@@ -32,7 +32,9 @@ export function useWebSocket(url: string) {
       }
 
       ws.onerror = (error) => {
-        console.error("WebSocket error:", error)
+        // Silently handle WebSocket errors as they are expected if the backend
+        // doesn't have WebSocket endpoints fully implemented yet.
+        // The browser will still log a native connection error, which is normal.
       }
 
       ws.onclose = () => {

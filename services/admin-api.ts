@@ -1,4 +1,4 @@
-const API_BASE = "https://api.himtalks.my.id";
+const API_BASE = "http://localhost:8080";
 
 export async function fetchAdminList() {
   try {
@@ -149,3 +149,137 @@ export async function updateSongfessDays(days: string) {
     throw error;
   }
 }
+
+export async function createForum(formData: FormData) {
+  try {
+    const response = await fetch(`${API_BASE}/api/admin/forums`, {
+      method: "POST",
+      credentials: "include",
+      // Do not set Content-Type header here, the browser will automatically set it to multipart/form-data with the correct boundary
+      body: formData,
+    });
+
+    if (!response.ok) {
+      if (response.status === 403) {
+        throw new Error("Mini forum hanya bisa dibuat antara pukul 19:00–21:00 WIB (Forbidden)");
+      }
+      
+      const errText = await response.text();
+      throw new Error(errText || "Failed to create forum");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error creating forum:", error);
+    throw error;
+  }
+}
+
+export async function fetchForums() {
+  try {
+    // Try the admin endpoint first, fallback to public endpoint
+    let response = await fetch(`${API_BASE}/api/admin/forums`, {
+      credentials: "include",
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      // Fallback to public forums endpoint
+      response = await fetch(`${API_BASE}/forums`, {
+        credentials: "include",
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+    }
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch forums");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching forums:", error);
+    throw error;
+  }
+}
+
+export async function updateForum(id: string | number, formData: FormData) {
+  try {
+    const response = await fetch(`${API_BASE}/api/admin/forums/${id}`, {
+      method: "PUT",
+      credentials: "include",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || "Failed to update forum");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating forum:", error);
+    throw error;
+  }
+}
+
+export async function deleteForum(id: string | number) {
+  try {
+    const response = await fetch(`${API_BASE}/api/admin/forums/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || "Failed to delete forum");
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Error deleting forum:", error);
+    throw error;
+  }
+}
+
+export async function fetchComments(forumId: string | number) {
+  try {
+    const response = await fetch(`${API_BASE}/forums/${forumId}/comments`, {
+      credentials: "include",
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch comments");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    throw error;
+  }
+}
+
+export async function deleteComment(commentId: string | number) {
+  try {
+    const response = await fetch(`${API_BASE}/api/admin/comments/${commentId}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || "Failed to delete comment");
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+    throw error;
+  }
+}

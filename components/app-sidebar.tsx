@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { MessageSquare, Music, LayoutDashboard, LogOut, LogIn, Users, Settings as SettingsIcon } from 'lucide-react'
+import { MessageSquare, Music, LayoutDashboard, LogOut, LogIn, Users, Settings as SettingsIcon, MessageCircle } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   Sidebar,
@@ -91,6 +91,14 @@ export default function AppSidebar() {
 
           {isAuthenticated && isAdmin && (
             <>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/forum"}>
+                  <Link href="/forum" className="flex items-center gap-3">
+                    <MessageCircle className="h-5 w-5" />
+                    <span>Forum</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname === "/admin-list"}>
                   <Link href="/admin-list" className="flex items-center gap-3">

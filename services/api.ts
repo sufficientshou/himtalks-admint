@@ -1,4 +1,4 @@
-const API_BASE = "https://api.himtalks.my.id"
+const API_BASE = "http://localhost:8080";
 
 export async function deleteMessage(id: string) {
   try {
@@ -8,7 +8,7 @@ export async function deleteMessage(id: string) {
         'Content-Type': 'application/json'
       },
       credentials: 'include', // This ensures cookies are sent with the request
-      body: JSON.stringify({ id })
+      body: JSON.stringify({ id: Number(id) })
     });
     
     if (!res.ok) {
@@ -31,7 +31,7 @@ export async function deleteSongfess(id: string) {
         'Content-Type': 'application/json'
       },
       credentials: 'include', // This ensures cookies are sent with the request
-      body: JSON.stringify({ id })
+      body: JSON.stringify({ id: Number(id) })
     });
     
     if (!res.ok) {

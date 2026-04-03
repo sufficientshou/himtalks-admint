@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const checkAuthStatus = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch("https://api.himtalks.my.id/api/protected", {
+      const response = await fetch("http://localhost:8080/api/protected", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -91,12 +91,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // Modified to use redirection for Google OAuth
   const login = () => {
     // Redirect to the Google OAuth endpoint
-    window.location.href = "https://api.himtalks.my.id/auth/google/login"
+    window.location.href = "http://localhost:8080/auth/google/login"
   }
 
   const logout = async (): Promise<void> => {
     try {
-      await fetch("https://api.himtalks.my.id/auth/logout", {
+      await fetch("http://localhost:8080/auth/logout", {
         method: "POST",
         credentials: "include"
       })

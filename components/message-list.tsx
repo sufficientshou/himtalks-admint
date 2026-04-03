@@ -55,9 +55,9 @@ export default function MessageList({ messages, onDelete }: MessageListProps) {
         <div className="text-center py-8 text-muted-foreground">No messages found.</div>
       ) : (
         messages.map((message) => (
-          <Card key={message.id} className="overflow-hidden">
-            <CardContent className="p-4">
-              <div className="flex items-start justify-between">
+          <Card key={message.id} className="overflow-hidden hover:shadow-md transition-all duration-300 border-border/50">
+            <CardContent className="p-5 md:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex items-center space-x-4">
                   <Avatar>
                     <AvatarFallback>{message.sender_name?.[0] || '?'}</AvatarFallback>
@@ -73,15 +73,17 @@ export default function MessageList({ messages, onDelete }: MessageListProps) {
                   {formatSafeDate(message.created_at)}
                 </div>
               </div>
-              <div className="mt-4 space-y-2">
-                <p className="text-sm">{message.content}</p>
+              <div className="mt-5 space-y-3">
+                <p className="text-sm md:text-base leading-relaxed">{message.content}</p>
                 {message.category && (
-                  <p className="text-xs text-muted-foreground">Category: {message.category}</p>
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                    {message.category}
+                  </span>
                 )}
               </div>
             </CardContent>
-            <CardFooter className="bg-muted/50 p-2">
-              <div className="flex w-full justify-end">
+            <CardFooter className="bg-muted/30 p-4 border-t">
+              <div className="flex w-full justify-end items-center">
                 <Button 
                   variant="ghost" 
                   size="sm" 

@@ -27,7 +27,7 @@ export default function AdminListPage() {
   const fetchAdmins = async () => {
     try {
       setLoading(true)
-      const response = await fetch("https://api.himtalks.my.id/api/admin/list", {
+      const response = await fetch("http://localhost:8080/api/admin/list", {
         credentials: "include",
         headers: {
           "Accept": "application/json"
@@ -74,7 +74,7 @@ export default function AdminListPage() {
 
     try {
       setAddingAdmin(true)
-      const response = await fetch("https://api.himtalks.my.id/api/admin/addAdmin", {
+      const response = await fetch("http://localhost:8080/api/admin/addAdmin", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -109,7 +109,7 @@ export default function AdminListPage() {
   const handleRemoveAdmin = async (adminEmail: string) => {
     try {
       setRemovingAdmin(adminEmail)
-      const response = await fetch("https://api.himtalks.my.id/api/admin/removeAdmin", {
+      const response = await fetch("http://localhost:8080/api/admin/removeAdmin", {
         method: "POST",
         credentials: "include",
         headers: {

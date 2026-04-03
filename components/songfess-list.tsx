@@ -64,11 +64,11 @@ export default function SongfessList({ songfess, onDelete }: SongfessListProps) 
         songfess.map((item) => (
           <Card 
             key={item.id} 
-            className="overflow-hidden hover:shadow-md transition cursor-pointer"
+            className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer border-border/50"
             onClick={() => goToDetails(item.id.toString())}
           >
-            <CardContent className="p-4">
-              <div className="flex items-start justify-between">
+            <CardContent className="p-5 md:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex items-center space-x-4">
                   <div className="h-10 w-10 rounded overflow-hidden bg-gray-100">
                     {item.album_art ? (
@@ -95,8 +95,8 @@ export default function SongfessList({ songfess, onDelete }: SongfessListProps) 
                 </div>
               </div>
               
-              <div className="mt-4 space-y-2">
-                <p className="text-sm line-clamp-2">{item.content}</p>
+              <div className="mt-5 space-y-3">
+                <p className="text-sm md:text-base leading-relaxed line-clamp-3">{item.content}</p>
                 <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                   <span>From: {item.sender_name || "Anonymous"} • To: {item.recipient_name || "Unknown"}</span>
                   {(item.start_time !== undefined || item.end_time !== undefined) && (
@@ -110,8 +110,8 @@ export default function SongfessList({ songfess, onDelete }: SongfessListProps) 
               </div>
             </CardContent>
             
-            <CardFooter className="bg-muted/50 p-2">
-              <div className="flex w-full justify-between">
+            <CardFooter className="bg-muted/30 p-4 border-t">
+              <div className="flex w-full justify-between items-center">
                 <Button
                   variant="outline"
                   size="sm"
